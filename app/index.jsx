@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet, ImageBackground } from 'react-native'
 import React from 'react'
+import { Link } from 'expo-router'
 const coffeebg = require('@/assets/images/coffeebg.jpg')
 
 const HomeScreen = () => {
@@ -7,6 +8,7 @@ const HomeScreen = () => {
     <View style={styles.container}>
       <ImageBackground source={coffeebg} resizeMode='cover' style={styles.image}>
         <Text style={styles.text}>Coffee Shop</Text>
+        <Link href='/explore' style={styles.link}>Explore</Link>
       </ImageBackground>
     </View>
   )
@@ -32,5 +34,13 @@ const styles = StyleSheet.create({
     width: '100%',
     resizeMode: 'cover',
     justifyContent: 'center'
+  },
+  link: {
+    fontSize: 24,
+    color: 'white',
+    textAlign: 'center',
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    textDecorationLine: 'underline',
+    padding: 10
   }
 })
