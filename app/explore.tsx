@@ -1,5 +1,6 @@
-import { StyleSheet, Text, View, FlatList } from 'react-native'
+import { StyleSheet, Text, View, ScrollView } from 'react-native'
 import React, { useState, useEffect } from 'react'
+import { AppBar, Surface, Stack } from "@react-native-material/core";
 
 interface Post {
   id: number;
@@ -17,19 +18,17 @@ const explore = () => {
   }, [])
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Explore</Text>
-      <FlatList
-        data={data}
-        keyExtractor={({ id }) => id.toString()}      
-        numColumns={2}
-        renderItem={({ item }) => (
-          <View style={styles.card}>
-            <Text>{item.title}</Text>
-            <Text>{item.body}</Text>
-          </View>
-        )}
-        showsHorizontalScrollIndicator={true}
-      />
+      <AppBar title="Explore"  />
+      <ScrollView>
+      <Stack direction="column" spacing={4}>
+        {data.map((post) => (
+          <Surface key={post.id} style={styles.card}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>{post.title}</Text>
+            <Text>{post.body}</Text>
+          </Surface>
+        ))}
+      </Stack>
+      </ScrollView>
     </View>
   )
 }
@@ -62,6 +61,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-    elevation: 5
+    elevation: 5,
+    padding: 10
   }
 })
