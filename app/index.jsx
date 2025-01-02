@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, ImageBackground } from 'react-native'
+import { View, Text, StyleSheet, ImageBackground, Pressable } from 'react-native'
 import React from 'react'
 import { Link } from 'expo-router'
 const coffeebg = require('@/assets/images/coffeebg.jpg')
@@ -8,7 +8,11 @@ const HomeScreen = () => {
     <View style={styles.container}>
       <ImageBackground source={coffeebg} resizeMode='cover' style={styles.image}>
         <Text style={styles.text}>Coffee Shop</Text>
-        <Link href='/explore' style={styles.link}>Explore</Link>
+        <Link href='/explore' style={{ marginHorizontal: 'auto'}} asChild>
+          <Pressable style={styles.button}>
+            <Text style={styles.buttonText}>Explore</Text>
+          </Pressable>
+        </Link>
       </ImageBackground>
     </View>
   )
@@ -35,12 +39,17 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     justifyContent: 'center'
   },
-  link: {
-    fontSize: 24,
+  buttonText: {
+    fontSize: 16,
+    fontWeight: 'bold',
     color: 'white',
     textAlign: 'center',
-    backgroundColor: 'rgba(0,0,0,0.5)',
-    textDecorationLine: 'underline',
-    padding: 10
+    padding: 4
+  },
+  button: {
+    backgroundColor: 'rgba(0,0,0,0.75)',
+    borderRadius: 20,
+    padding: 10,
+    justifyContent: 'center',
   }
 })
